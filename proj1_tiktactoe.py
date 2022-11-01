@@ -1,5 +1,5 @@
 
-
+#adding comment 
 
 
 row1=[' ',' ',' ']
@@ -22,14 +22,15 @@ def prmpt_user_again():
     return r
 
 r=prmpt_user()
+# print(type(r))
+x=str(r)
+# print(type(x))
 
-if r>=0 and r<=2:
+print(x.isdigit())
+
+if x.isdigit() and (r>=0 and r<=2):
     print('Entered: ',r)
     row1[r]='x'
     displayCube()
 else:
     prmpt_user_again()
-    
-
-
-
