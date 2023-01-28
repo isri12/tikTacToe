@@ -1,17 +1,29 @@
 
 #Israel Kinfu
-# last update 11/08/2022
+#print 3X3 Matrix
+#prompt user and displey it on Matrix
+#add player detail - player one and two
+
+
+def main():
+    game_rules()
+    display_cube()
+    #symbol1,symbol2=player_detail()
+    run_the_game()
+
 
 def game_rules():
     print('=====================================================\n'
           'Game rules:\n'
+          "Player 1 and player 2, represented by X and O, take turns \n"
+          "marking the spaces in a 3*3 grid. The player who succeeds in placing \n "
+          "three of their marks in a horizontal, vertical, or diagonal row wins. \n"
+
           '1 means that player 1 put their token in that space \n'
           '2 means that player 2 put their token in that space \n'
+
           'Good Luck!\n'
           '=====================================================')
-
-
-game_rules()
 
 
 matrix = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
@@ -35,9 +47,6 @@ def prompt_user():
     return user_input
 
 
-display_cube()
-
-
 def prompt_user_again():
     user_input = int(input("wrong input: enter column b/n 0 - 8: "))
     return user_input
@@ -49,53 +58,69 @@ def Place_choice(r):
     return 0
 
 
-while True:
-    r = prompt_user()
-    x = str(r)
-    if x.isdigit() and (0 <= r <= 8):
-        # print('Entered: ', r)
-        # first_row[r] = 'x'
-        if r == 0:
-            first_row[0] = 'x'
-        if r == 1:
-            first_row[1] = 'x'
-        if r == 2:
-            first_row[2] = 'x'
-        if r == 3:
-            second_row[0] = 'x'
-        if r == 4:
-            second_row[1] = 'x'
-        if r == 5:
-            second_row[2] = 'x'
-        if r == 6:
-            third_row[0] = 'x'
-        if r == 7:
-            third_row[1] = 'x'
-        if r == 8:
-            third_row[2] = 'x'
-        display_cube()
-    elif r == 9:
-        break
-    else:
-        prompt_user_again()
+def player_detail():
+    player_symbol=str(input("player 1 do you want to be X or O ? "))
+    if player_symbol == 'x' or player_symbol == 'X':
+        player_symbol1 = 'X'
+        player_symbol2 = 'O'
+        print("player 1 is ",player_symbol1,"\n"
+              "player 2 is ",player_symbol2)
+    elif player_symbol =='o' or player_symbol =='O':
+        player_symbol1 = 'O'
+        player_symbol2 = 'X'
+        print("player 1 is is",player_symbol1,"\n"
+              "player 2 is is",player_symbol2)
+    return player_symbol1,player_symbol2
+
+def whoiswinner():
+    print()
+    print('*****************************')
+    print('congragulations player X won')
+    print('*****************************')
+
+def iswinner():
+    if first_row[0]==first_row[1]==first_row[2] :
+        whoiswinner()
+    elif second_row[0]==second_row[1]==second_row[2]:
+        whoiswinner()
+
+def run_the_game():
+    player_symbol1,player_symbol2=player_detail()
+    while True:
+        r = prompt_user()
+        x = str(r)
+        if x.isdigit() and (0 <= r <= 8):
+            # print('Entered: ', r)
+            # first_row[r] = 'x'
+            if r == 0:
+                first_row[0] = player_symbol1
+            if r == 1:
+                first_row[1] = player_symbol1
+            if r == 2:
+                first_row[2] = player_symbol1
+            if r == 3:
+                second_row[0] = player_symbol1
+            if r == 4:
+                second_row[1] = player_symbol1
+            if r == 5:
+                second_row[2] = player_symbol1
+            if r == 6:
+                third_row[0] = player_symbol2
+            if r == 7:
+                third_row[1] = player_symbol2
+            if r == 8:
+                third_row[2] = player_symbol2
+            display_cube()
+            iswinner()
+        elif r == 9:
+            break
+        else:
+            prompt_user_again()
+
+#call the main function
+main()
 
 
-####Archive code######
-# r=prmpt_user()
-# # print(type(r))
-# x=str(r)
-# print(type(x))
-
-#print(x.isdigit())
-
-#x.isdigit() and (r>=0 and r<=2):
-
-# if x.isdigit() and (r>=0 and r<=2):
-#     print('Entered: ',r)
-#     row1[r]='x'
-#     displayCube()
-# else:
-#     prmpt_user_again()
 
 
         
