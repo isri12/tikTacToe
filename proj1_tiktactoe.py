@@ -50,7 +50,6 @@ def prompt_user():
 def prompt_user_again():
     user_input = int(input("wrong input: enter column b/n 0 - 8: "))
     return user_input
-    return r
 
 
 def Place_choice(r):
@@ -78,10 +77,10 @@ def whoiswinner():
     print('congragulations player X won')
     print('*****************************')
 
-def iswinner():
-    if first_row[0]==first_row[1]==first_row[2] :
+def iswinner(user_input):
+    if first_row[0]==user_input and first_row[1]==user_input and first_row[2]==user_input :
         whoiswinner()
-    elif second_row[0]==second_row[1]==second_row[2]:
+    elif second_row[0] ==user_input and second_row[1]==user_input and second_row[2]==user_input:
         whoiswinner()
 
 def run_the_game():
@@ -111,7 +110,6 @@ def run_the_game():
             if r == 8:
                 third_row[2] = player_symbol2
             display_cube()
-            iswinner()
         elif r == 9:
             break
         else:
